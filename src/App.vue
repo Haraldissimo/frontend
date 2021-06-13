@@ -32,7 +32,7 @@ export default {
   methods: {
     addEntry: function(e) {
       axios
-        .post("https://webprog2021.herokuapp.com:23372/profs/", {
+        .post("https://webprog2021.herokuapp.com/profs/", {
           name: e.name,
           rating: e.rating
         })
@@ -42,7 +42,7 @@ export default {
     },
     editEntry: function(e) {
       axios
-        .put("webprog2021.herokuapp.com:23372/profs/" + e.index, {
+        .put("webprog2021.herokuapp.com/profs/" + e.index, {
           name: e.name,
           rating: e.rating
         })
@@ -51,19 +51,19 @@ export default {
         });
     },
     removeEntry: function(e) {
-      axios.delete("webprog2021.herokuapp.com:23372/profs/" + e.index).then(response => {
+      axios.delete("webprog2021.herokuapp.com/profs/" + e.index).then(response => {
         this.listOfEntries = response.data;
       });
     },
     removeAll: function() {
-      axios.delete("webprog2021.herokuapp.com:23372/profs/").then(response => {
+      axios.delete("webprog2021.herokuapp.com/profs/").then(response => {
         this.listOfEntries =response.data;
         this.listOfEntries =[];
       });
     }
   },
   mounted() {
-    axios.get("webprog2021.herokuapp.com:23372/profs/").then(response => {
+    axios.get("webprog2021.herokuapp.com/profs/").then(response => {
       this.listOfEntries = response.data;
     });
   }
